@@ -1,6 +1,6 @@
 [project]
 name = "v2raypy"
-version = "1.0.0"
+version = "1.0.2"
 description = "A Python library to handle and parse v2ray links"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -12,6 +12,12 @@ authors = [
 
 dependencies = [
 ]
+
+[project.urls]
+Homepage = "https://github.com/sina8125/v2raypy"
+Documentation = "https://github.com/sina8125/v2raypy#readme"
+Repository = "https://github.com/sina8125/v2raypy"
+"Bug Tracker" = "https://github.com/sina8125/v2raypy/issues"
 
 [build-system]
 requires = ["setuptools>=61.0", "wheel"]
