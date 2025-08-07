@@ -28,6 +28,30 @@ class V2ray(SettingsBase):
         self.send_through = send_through
         self.mux = mux
 
+    @property
+    def id(self):
+        return self.settings.id
+
+    @id.setter
+    def id(self, value):
+        self.settings.id = value
+
+    @property
+    def address(self):
+        return self.settings.address
+
+    @address.setter
+    def address(self, value):
+        self.settings.address = value
+
+    @property
+    def port(self):
+        return self.settings.port
+
+    @port.setter
+    def port(self, value):
+        self.settings.port = value
+
     def can_enable_stream(self):
         return self.protocol in [Protocols.VMess, Protocols.VLESS, Protocols.Trojan, Protocols.Shadowsocks]
 
@@ -428,5 +452,3 @@ class V2ray(SettingsBase):
         url[5] = quote(remark)
         url = urlunparse(url)
         return url
-
-

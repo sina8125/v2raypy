@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Dict, Self
+from typing import Dict, Self, Optional
 
 
 class V2rayBase(ABC):
@@ -34,3 +34,22 @@ class SettingsBase(V2rayBase, ABC):
         return v2headers
 
     pass
+
+
+class ProtocolSettingsBase(SettingsBase, ABC):
+    def __init__(self,
+                 address: Optional[str] = None,
+                 port: Optional[int] = None
+                 ):
+        self.address = address
+        self.port = port
+
+    @property
+    @abstractmethod
+    def id(self):
+        raise NotImplementedError
+
+    @id.setter
+    @abstractmethod
+    def id(self, value):
+        raise NotImplementedError

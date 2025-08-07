@@ -1,7 +1,7 @@
 from enum import Enum
 from typing import Dict, Self, Optional
 
-from base import SettingsBase
+from base import ProtocolSettingsBase, SettingsBase
 
 
 class Protocols(str, Enum):
@@ -17,18 +17,24 @@ class Protocols(str, Enum):
     Wireguard = "wireguard"
 
 
-class VmessSettings(SettingsBase):
+class VmessSettings(ProtocolSettingsBase):
     def __init__(self,
                  address: Optional[str] = None,
                  port: Optional[int] = None,
                  uuid: Optional[str] = None,
                  security: Optional[str] = None
                  ):
-        super().__init__()
-        self.address = address
-        self.port = port
+        super().__init__(address, port)
         self.uuid = uuid
         self.security = security
+
+    @property
+    def id(self):
+        return self.uuid
+
+    @id.setter
+    def id(self, value):
+        self.uuid = value
 
     @classmethod
     def from_dict(cls, config: Dict) -> Self:
@@ -53,7 +59,7 @@ class VmessSettings(SettingsBase):
         }
 
 
-class VlessSettings(SettingsBase):
+class VlessSettings(ProtocolSettingsBase):
     def __init__(self,
                  address: Optional[str] = None,
                  port: Optional[int] = None,
@@ -61,12 +67,18 @@ class VlessSettings(SettingsBase):
                  flow: Optional[str] = None,
                  encryption: str = 'none'
                  ):
-        super().__init__()
-        self.address = address
-        self.port = port
+        super().__init__(address, port)
         self.uuid = uuid
         self.flow = flow
         self.encryption = encryption
+
+    @property
+    def id(self):
+        return self.uuid
+
+    @id.setter
+    def id(self, value):
+        self.uuid = value
 
     @classmethod
     def from_dict(cls, config: Dict) -> Self:
@@ -93,16 +105,22 @@ class VlessSettings(SettingsBase):
         }
 
 
-class TrojanSettings(SettingsBase):
+class TrojanSettings(ProtocolSettingsBase):
     def __init__(self,
                  address: Optional[str] = None,
                  port: Optional[int] = None,
                  password: Optional[str] = None
                  ):
-        super().__init__()
-        self.address = address
-        self.port = port
+        super().__init__(address, port)
         self.password = password
+
+    @property
+    def id(self):
+        return self.password
+
+    @id.setter
+    def id(self, value):
+        self.password = value
 
     @classmethod
     def from_dict(cls, config: Dict) -> Self:
@@ -123,7 +141,7 @@ class TrojanSettings(SettingsBase):
         }
 
 
-class ShadowsocksSettings(SettingsBase):
+class ShadowsocksSettings(ProtocolSettingsBase):
     def __init__(self,
                  address: Optional[str] = None,
                  port: Optional[int] = None,
@@ -131,13 +149,19 @@ class ShadowsocksSettings(SettingsBase):
                  method: Optional[str] = None,
                  uot: Optional[bool] = None,
                  uot_version: Optional[int] = None):
-        super().__init__()
-        self.address = address
-        self.port = port
+        super().__init__(address, port)
         self.password = password
         self.method = method
         self.uot = uot
         self.uot_version = uot_version
+
+    @property
+    def id(self):
+        return self.password
+
+    @id.setter
+    def id(self, value):
+        self.password = value
 
     @classmethod
     def from_dict(cls, config: Dict) -> Self:
