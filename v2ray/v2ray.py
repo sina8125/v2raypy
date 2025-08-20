@@ -246,17 +246,17 @@ class V2ray(SettingsBase):
         remark = remark or self.tag
         match self.protocol:
             case Protocols.VMess:
-                id = client.get('id', self.settings and self.settings.uuid)
+                id = client.get('id', self.settings and self.settings.id)
                 security = client.get('security', self.settings and self.settings.security)
                 return self.gen_vmess_link(id, security, address, port, force_tls, remark)
             case Protocols.VLESS:
-                id = client.get('id', self.settings and self.settings.uuid)
+                id = client.get('id', self.settings and self.settings.id)
                 return self.gen_vless_link(id, client.get('flow'), address, port, force_tls, remark)
             case Protocols.Shadowsocks:
-                password = client.get('password', self.settings and self.settings.password)
+                password = client.get('password', self.settings and self.settings.id)
                 return self.gen_ss_link(password, address, port, force_tls, remark)
             case Protocols.Trojan:
-                password = client.get('password', self.settings and self.settings.password)
+                password = client.get('password', self.settings and self.settings.id)
                 return self.gen_trojan_link(password, address, port, force_tls, remark)
             case _:
                 return ''
