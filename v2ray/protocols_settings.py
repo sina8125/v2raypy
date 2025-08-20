@@ -1,7 +1,7 @@
 from enum import Enum
 from typing import Dict, Self, Optional
 
-from base import ProtocolSettingsBase, SettingsBase
+from v2ray.base import ProtocolSettingsBase, SettingsBase
 
 
 class Protocols(str, Enum):

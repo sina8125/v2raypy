@@ -1,6 +1,6 @@
 from typing import Dict, Self
 
-from base import SettingsBase
+from v2ray.base import SettingsBase
 
 
 class TcpStreamSettings(SettingsBase):

@@ -4,10 +4,10 @@ from typing import Dict, Self
 import re
 from urllib.parse import urlparse, parse_qs, unquote, urlencode, urlunparse, quote
 
-from base import SettingsBase
-from stream_settings import StreamSettings, TcpStreamSettings, KcpStreamSettings, WsStreamSettings, GrpcStreamSettings, \
+from v2ray.base import SettingsBase
+from v2ray.stream_settings import StreamSettings, TcpStreamSettings, KcpStreamSettings, WsStreamSettings, GrpcStreamSettings, \
     HttpUpgradeStreamSettings, XHttpStreamSettings, TlsStreamSettings, Mux, RealityStreamSettings
-from protocols_settings import Protocols, VmessSettings, VlessSettings, TrojanSettings, ShadowsocksSettings, Settings
+from v2ray.protocols_settings import Protocols, VmessSettings, VlessSettings, TrojanSettings, ShadowsocksSettings, Settings
 
 
 class V2ray(SettingsBase):
